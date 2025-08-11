@@ -1,4 +1,5 @@
 import 'package:anket/screens/admin/addsurvey_screen.dart';
+import 'package:anket/screens/admin/resultslist_screen.dart';
 import 'package:anket/screens/survey/survey_list_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -66,12 +67,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             if (isAdmin)
               ListTile(
-              title: const Text('Yönetici - Sonuçlar'),
-              onTap: () => Navigator.pushNamed(
-                context,
-                '/results',
-                arguments: {'surveyId': ''},
-              ),
+              title: const Text('Anket Sonuçları'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ResultsListScreen(),
+                  ),
+                );
+
+              }
             ),
             ListTile(
               title: const Text('Çıkış'),
